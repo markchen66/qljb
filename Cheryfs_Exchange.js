@@ -13,7 +13,7 @@ console.log('开始等待 30 秒...');
 const $ = new Env('好奇车生活兑换')
 const Cheryfs = ($.isNode() ? JSON.parse(process.env.Cheryfs) : $.getjson("Cheryfs")) || [];
 let Cheryfs_Acc = ($.isNode() ? process.env.Cheryfs_Acc : $.getdata("Cheryfs_Acc")) || 0;
-let Cheryfs_GIFTID = ($.isNode() ? process.env.Cheryfs_GIFTID : $.getdata("Cheryfs_GIFTID")) || '754492665391370240';
+let Cheryfs_GIFTID = ($.isNode() ? process.env.Cheryfs_GIFTID : $.getdata("Cheryfs_GIFTID")) ;//|| '792556957722198016'
 let accountId = ''
 !(async () => {
     await main();

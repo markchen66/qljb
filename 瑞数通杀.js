@@ -4,9 +4,7 @@ ActiveXObject = undefined
 
 window = global;
 
-
 content="content_code"
-
 
 navigator = {"platform": "Linux aarch64"}
 navigator = {"userAgent": "CtClient;11.0.0;Android;13;22081212C;NTIyMTcw!#!MTUzNzY"}
@@ -31,14 +29,13 @@ div = {
         if (res === 'i') {
             return i
         }
-    return '<div></div>'
-
+        return '<div></div>'
     }
 }
 
 script = {
-
 }
+
 meta = [
     {charset:"UTF-8"},
     {
@@ -52,43 +49,30 @@ meta = [
         parentNode: {
             removeChild: function (res) {
                 console.log('meta中的removeChild：', res)
-                
-              return content
+                return content
             }
         },
-        
     }
 ]
 form = '<form></form>'
 
-
-window.addEventListener= function (res) {
-        console.log('window中的addEventListener:', res)
-        
-    }
-    
+window.addEventListener = function (res) {
+    console.log('window中的addEventListener:', res)
+}
 
 document = {
-
-   
     createElement: function (res) {
         console.log('document中的createElement：', res)
-        
-        
-       if (res === 'div') {
+        if (res === 'div') {
             return div
         } else if (res === 'form') {
             return form
+        } else {
+            return res
         }
-        else{return res}
-            
-        
-
-
     },
     addEventListener: function (res) {
         console.log('document中的addEventListener:', res)
-        
     },
     appendChild: function (res) {
         console.log('document中的appendChild：', res)
@@ -115,20 +99,15 @@ document = {
             return null
         }
     }
-
 }
 
 setInterval = function () {}
 setTimeout = function () {}
 window.top = window
 
-
 'ts_code'
-
-
 
 function main() {
     cookie = document.cookie.split(';')[0]
     return cookie
 }
-

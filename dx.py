@@ -418,7 +418,7 @@ async def main():
 
         await asyncio.gather(*tasks)
 
-appToken = ""
+appToken = "AT_lYvTZzheQyGVV4s70mAblInUzjPuMsX1"
 
 chinaTelecomAccount = os.environ.get('jdhf')
 

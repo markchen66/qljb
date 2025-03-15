@@ -449,7 +449,7 @@ def main():
 
     for i in chinaTelecomAccount.split('&'):
 
-        i = i.split('@')
+        i = i.split('#')
         phone = i[0]
         password = i[1]
         level = i[2]

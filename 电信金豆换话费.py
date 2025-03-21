@@ -5,7 +5,7 @@
 # `.trim();
 '''
 变量：jdhf
-变量格式: 手机号#服务密码
+变量格式: 手机号@服务密码
 多号创建多个变量或者换行、&隔开
 '''
 import requests
@@ -498,11 +498,11 @@ def main():
             printn(f'{phone} 登录失败')
 
 #手机号@密码@wxpusheruid
-jdhf = ""
+jdhf = "15318464883@177453@UID_Fd07tcXYCxBaJgrrRbXjAs5RRQRl"
 #重发次数
 cfcs = 15
 #wxpusher推送appToken
-appToken = ""
+appToken = "AT_lYvTZzheQyGVV4s70mAblInUzjPuMsX1"
 jdaid = '60dd79533dc03d3c76bdde30'
 ck = {}
 load_token_file = 'chinaTelecom_cache.json'

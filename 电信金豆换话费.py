@@ -77,7 +77,7 @@ ss.headers={"User-Agent":"Mozilla/5.0 (Linux; Android 13; 22081212C Build/TKQ1.2
 ss.mount('https://', DESAdapter())
 yc = 0.1
 wt = 0
-kswt = -3
+kswt = 0
 yf = datetime.datetime.now().strftime("%Y%m")
 
 

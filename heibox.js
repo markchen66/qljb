@@ -3,6 +3,8 @@
 # cron: 0 15 6 * * ?
 */
 
+const axios = require('axios');
+
 (async () => {
   let message = [];
 
@@ -20,13 +22,13 @@
         url: url,
         headers: headers
       };
-      $httpClient.get(options, (error, response, data) => {
-        if (error) {
+      axios.get(url, { headers: headers })
+        .then(response => {
+          resolve(response.data);
+        })
+        .catch(error => {
           reject(error);
-        } else {
-          resolve(data);
-        }
-      });
+        });
     });
   }
 
@@ -199,6 +201,5 @@
   }
 
   // 发送通知
-  $notification.post("小黑盒", "", message.join("\n"));
-  $done();
+  console.log("小黑盒:\n" + message.join("\n"));
 })();

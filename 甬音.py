@@ -1,11 +1,9 @@
- 
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 甬音自动任务脚本
 功能：听音频、抽奖、提现到支付宝
 """
-
 import requests
 import time
 import random
@@ -25,6 +23,41 @@ class YongYin:
         self.user_info = None
         self.points = 0
         self.balance = 0.0
+        self.proxy = self.get_proxy()
+
+    def get_proxy(self):
+        """获取代理 IP"""
+        proxy_api = 'https://service.ipzan.com/core-extract'
+        params = {
+            'num': 1,
+            'no': '20250227698256492446',
+            'minute': 1,
+            'pool': 'quality',
+            'secret': 'c59gk4o5ujvbui',
+            'format': 'txt'  # 指定返回格式为 txt
+        }
+        try:
+            response = requests.get(proxy_api, params=params)
+            response.raise_for_status()  # 检查请求是否成功
+            proxy_ip = response.text.strip()  # 去除首尾空白字符
+            if proxy_ip:
+                proxy = {
+                    'http': f'http://{proxy_ip}',
+                    'https': f'http://{proxy_ip}'
+                }
+                print(f"✅ 获取代理 IP 成功: {proxy_ip}")
+                return proxy
+            else:
+                print("❌ 获取代理 IP 失败: 返回内容为空")
+                return None
+        except requests.exceptions.HTTPError as http_err:
+            print(f"❌ HTTP 请求错误: {http_err}")
+            print(f"API 返回状态码: {response.status_code}")
+            print(f"API 返回内容: {response.text}")
+            return None
+        except Exception as e:
+            print(f"❌ 获取代理 IP 异常: {str(e)}")
+            return None
 
     def login(self, phone, password):
         """登录甬音APP"""
@@ -36,7 +69,7 @@ class YongYin:
             'platform': 'wechat'
         }
         try:
-            response = self.session.post(url, headers=self.headers, data=data, timeout=10)
+            response = self.session.post(url, headers=self.headers, data=data, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 self.token = result.get('data').get('token')
@@ -55,7 +88,7 @@ class YongYin:
         """获取用户信息"""
         url = 'https://yyapp.nbyongyin.com/api/user/info'
         try:
-            response = self.session.get(url, headers=self.headers, timeout=10)
+            response = self.session.get(url, headers=self.headers, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 self.user_info = result.get('data')
@@ -83,7 +116,7 @@ class YongYin:
             'type': 'recommend'
         }
         try:
-            response = self.session.get(url, headers=self.headers, params=params, timeout=10)
+            response = self.session.get(url, headers=self.headers, params=params, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 print(f"✅ 获取到{len(result.get('data').get('list'))}个音频")
@@ -108,8 +141,8 @@ class YongYin:
             sleep_time = random.randint(5, 10)
             print(f"⏳ 模拟听音频中(约{sleep_time}秒)...")
             time.sleep(sleep_time)
-            
-            response = self.session.post(url, headers=self.headers, data=data, timeout=15)
+
+            response = self.session.post(url, headers=self.headers, data=data, timeout=15, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 points = result.get('data', {}).get('points', 0)
@@ -128,7 +161,7 @@ class YongYin:
         print("\n正在获取每日任务...")
         url = 'https://yyapp.nbyongyin.com/api/task/daily'
         try:
-            response = self.session.get(url, headers=self.headers, timeout=10)
+            response = self.session.get(url, headers=self.headers, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 print("✅ 获取每日任务成功")
@@ -148,7 +181,7 @@ class YongYin:
             'task_id': task_id
         }
         try:
-            response = self.session.post(url, headers=self.headers, data=data, timeout=10)
+            response = self.session.post(url, headers=self.headers, data=data, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 points = result.get('data', {}).get('points', 0)
@@ -167,7 +200,7 @@ class YongYin:
         print("\n正在检查抽奖资格...")
         url = 'https://yyapp.nbyongyin.com/api/lottery/status'
         try:
-            response = self.session.get(url, headers=self.headers, timeout=10)
+            response = self.session.get(url, headers=self.headers, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 print("✅ 获取抽奖状态成功")
@@ -184,7 +217,7 @@ class YongYin:
         print("\n🎰 正在参与抽奖...")
         url = 'https://yyapp.nbyongyin.com/api/lottery/participate'
         try:
-            response = self.session.post(url, headers=self.headers, timeout=10)
+            response = self.session.post(url, headers=self.headers, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 prize = result.get('data', {}).get('prize', '谢谢参与')
@@ -202,7 +235,7 @@ class YongYin:
         print("\n正在检查提现规则...")
         url = 'https://yyapp.nbyongyin.com/api/withdraw/rules'
         try:
-            response = self.session.get(url, headers=self.headers, timeout=10)
+            response = self.session.get(url, headers=self.headers, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 print("✅ 获取提现规则成功")
@@ -223,7 +256,7 @@ class YongYin:
             'real_name': real_name
         }
         try:
-            response = self.session.post(url, headers=self.headers, data=data, timeout=10)
+            response = self.session.post(url, headers=self.headers, data=data, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 print("✅ 绑定支付宝成功")
@@ -244,7 +277,7 @@ class YongYin:
             'type': 'alipay'
         }
         try:
-            response = self.session.post(url, headers=self.headers, data=data, timeout=10)
+            response = self.session.post(url, headers=self.headers, data=data, timeout=10, proxies=self.proxy)
             result = response.json()
             if result.get('code') == 200:
                 print(f"✅ 提现申请成功: {result.get('msg')}")
@@ -263,7 +296,7 @@ class YongYin:
         password = os.getenv('YY_PASSWORD')
         alipay_account = os.getenv('YY_ALIPAY_ACCOUNT')
         real_name = os.getenv('YY_REAL_NAME')
-        
+
         if not phone or not password:
             print("❌ 请设置环境变量YY_PHONE和YY_PASSWORD")
             return
@@ -314,7 +347,7 @@ class YongYin:
                     # 绑定支付宝（如果需要）
                     if alipay_account and real_name:
                         self.bind_alipay(alipay_account, real_name)
-                    
+
                     # 申请提现
                     self.withdraw_to_alipay(min_amount)
                 else:
@@ -332,11 +365,10 @@ if __name__ == '__main__':
     print("功能：听音频、抽奖、提现到支付宝")
     print(f"开始时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("="*50)
-    
+
     yy = YongYin()
     yy.run()
-    
+
     print("="*50)
     print(f"结束时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("="*50)
- 

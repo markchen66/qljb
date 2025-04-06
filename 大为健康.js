@@ -9,36 +9,16 @@
 
 let uid = ""
 let Authorization = ""
-let openid = "odrFI6snMa2Hz5cJRFlbPL8UGSDs";
+let openid = "";
 let userList = [
   {
-    "uid": "2642697",
-    "Authorization": "4aad85e5dee2a48224c88ab1502e2fdb",
-    "baseUrl": "http://zj.zjdtxt.com",
-    "openid": "oIlr36POgYKS11GxIotZ65B4wBxE",
+    "uid": "2686938",
+    "Authorization": "4f0a411a3c14afaa239b51b9b23063f9",
+    "baseUrl": "http://69162206558.6.syhywl1.com/",
+    "openid": "o8LHL6Mi87QvwDikTEpWn1JSh10M",
     "n": -1
-  },
-  {
-    "uid": "2642693",
-    "Authorization": "d620c2753b3f36d54aa961511af51626",
-    "baseUrl": "http://zj.zjdtxt.com",
-    "openid": "oIlr36GFMyn0GAj5om8_4XvpGfuM",
-    // "n": 1
-  },
-  {
-    "uid": "2642699",
-    "Authorization": "2227d84e69b17eaea5705c0cbed2b226",
-    "baseUrl": "http://zj.zjdtxt.com",
-    "openid": "oIlr36HIfmXKr6Tqtvng8heig4cg",
-    "n": -2
   }
-
-
-
-
 ]
-
-
 //1-101
 var ids = [
 

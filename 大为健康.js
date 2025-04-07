@@ -15,15 +15,11 @@ let userList = [
     "uid": "2686938",
     "Authorization": "4f0a411a3c14afaa239b51b9b23063f9",
     "baseUrl": "http://69162206558.6.syhywl1.com/",
-    "openid": "o8LHL6Mi87QvwDikTEpWn1JSh10M",
-    "n": -1
+    "openid": "o8LHL6Mi87QvwDikTEpWn1JSh10M"
   }
 ]
 //1-101
 var ids = [
-
-
-
   "1648253549",
   "1648345794",
   "1648345844",
@@ -129,8 +125,8 @@ var ids = [
   "1652135586",
   "1652135639",
   "1652135717",
-  // "1683794533",
-  // "1683795077",
+  "1683794533",
+  "1683795077",
   "1652686593",
   "1652772165",
 
@@ -166,7 +162,7 @@ var headers = {
   'Authorization': Authorization,
   'User-Agent': 'Mozilla/5.0 (Linux; Android 12; 22041211AC Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/111.0.5563.116 Mobile Safari/537.36 XWEB/5317 MMWEBSDK/20230805 MMWEBID/2593 MicroMessenger/8.0.41.2441(0x28002951) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64',
   'Content-Type': 'application/x-www-form-urlencoded',
-  'Referer': 'http://hb3.hbdtxt.com/',
+  'Referer': 'http://69162206558.6.syhywl1.com/',
   'Accept-Encoding': 'gzip, deflate',
   'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
   'Cookie': 's342b0066=tme797db1if1i4qlq1i0d7dv13'

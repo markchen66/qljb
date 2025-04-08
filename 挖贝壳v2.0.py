@@ -6,7 +6,7 @@
 # qq:482550471，备注来意
 
 print("☞☞☞ 挖贝壳币 ☜☜☜\n")
-
+import os
 import requests
 import time
 

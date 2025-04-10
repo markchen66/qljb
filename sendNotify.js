@@ -38,13 +38,6 @@ let SCKEY = '';
 //此处填你申请的PushDeer KEY.
 //(环境变量名 DEER_KEY)
 let PUSHDEER_KEY = '';
-let PUSHDEER_URL = '';
-
-// =======================================Synology Chat通知设置区域===========================================
-//此处填你申请的CHAT_URL与CHAT_TOKEN
-//(环境变量名 CHAT_URL CHAT_TOKEN)
-let CHAT_URL = '';
-let CHAT_TOKEN = '';
 
 // =======================================Bark App通知设置区域===========================================
 //此处填你BarkAPP的信息(IP/设备码，例如：https://api.day.app/XXXXXXXX)
@@ -76,10 +69,6 @@ let DD_BOT_TOKEN = '';
 //密钥，机器人安全设置页面，加签一栏下面显示的SEC开头的字符串
 let DD_BOT_SECRET = '';
 
-// =======================================企业微信基础设置===========================================
-// 企业微信反向代理地址
-//(环境变量名 QYWX_ORIGIN)
-let QYWX_ORIGIN = '';
 // =======================================企业微信机器人通知设置区域===========================================
 //此处填你企业微信机器人的 webhook(详见文档 https://work.weixin.qq.com/api/doc/90000/90136/91770)，例如：693a91f6-7xxx-4bc4-97a0-0ec2sifa5aaa
 //(环境变量名 QYWX_KEY)
@@ -105,46 +94,8 @@ let IGOT_PUSH_KEY = '';
 //官方文档：http://www.pushplus.plus/
 //PUSH_PLUS_TOKEN：微信扫码登录后一对一推送或一对多推送下面的token(您的Token)，不提供PUSH_PLUS_USER则默认为一对一推送
 //PUSH_PLUS_USER： 一对多推送的“群组编码”（一对多推送下面->您的群组(如无则新建)->群组编码，如果您是创建群组人。也需点击“查看二维码”扫描绑定，否则不能接受群组消息推送）
-let PUSH_PLUS_TOKEN = '';//
+let PUSH_PLUS_TOKEN = '';
 let PUSH_PLUS_USER = '';
-
-// =======================================Cool Push设置区域=======================================
-//官方文档：https://cp.xuthus.cc/docs
-//QQ_SKEY: Cool Push登录授权后推送消息的调用代码Skey
-//QQ_MODE: 推送模式详情请登录获取QQ_SKEY后见https://cp.xuthus.cc/feat
-let QQ_SKEY = '';
-let QQ_MODE = '';
-
-// =======================================智能微秘书设置区域=======================================
-//官方文档：http://wechat.aibotk.com/docs/about
-//AIBOTK_KEY： 填写智能微秘书个人中心的apikey
-//AIBOTK_TYPE：填写发送的目标 room 或 contact, 填其他的不生效
-//AIBOTK_NAME: 填写群名或用户昵称，和上面的type类型要对应
-let AIBOTK_KEY = '';
-let AIBOTK_TYPE = '';
-let AIBOTK_NAME = '';
-
-// =======================================飞书机器人设置区域=======================================
-//官方文档：https://www.feishu.cn/hc/zh-CN/articles/360024984973
-//FSKEY 飞书机器人的 FSKEY
-let FSKEY = '';
-
-// =======================================SMTP 邮件设置区域=======================================
-// SMTP_SERVER: 填写 SMTP 发送邮件服务器，形如 smtp.exmail.qq.com:465
-// SMTP_SSL: 填写 SMTP 发送邮件服务器是否使用 SSL，内容应为 true 或 false
-// SMTP_EMAIL: 填写 SMTP 收发件邮箱，通知将会由自己发给自己
-// SMTP_PASSWORD: 填写 SMTP 登录密码，也可能为特殊口令，视具体邮件服务商说明而定
-// SMTP_NAME: 填写 SMTP 收发件人姓名，可随意填写
-let SMTP_SERVER = '';
-let SMTP_SSL = 'false';
-let SMTP_EMAIL = '';
-let SMTP_PASSWORD = '';
-let SMTP_NAME = '';
-
-// =======================================PushMe通知设置区域===========================================
-//官方文档：https://push.i-i.me/
-//此处填你的PushMe KEY.
-let PUSHME_KEY = '';
 
 //==========================云端环境变量的判断与接收=========================
 if (process.env.GOTIFY_URL) {
@@ -173,15 +124,6 @@ if (process.env.PUSH_KEY) {
 
 if (process.env.DEER_KEY) {
   PUSHDEER_KEY = process.env.DEER_KEY;
-  PUSHDEER_URL = process.env.DEER_URL;
-}
-
-if (process.env.CHAT_URL) {
-  CHAT_URL = process.env.CHAT_URL;
-}
-
-if (process.env.CHAT_TOKEN) {
-  CHAT_TOKEN = process.env.CHAT_TOKEN;
 }
 
 if (process.env.QQ_SKEY) {
@@ -239,12 +181,6 @@ if (process.env.DD_BOT_TOKEN) {
   }
 }
 
-if (process.env.QYWX_ORIGIN) {
-  QYWX_ORIGIN = process.env.QYWX_ORIGIN;
-} else {
-  QYWX_ORIGIN = 'https://qyapi.weixin.qq.com';
-}
-
 if (process.env.QYWX_KEY) {
   QYWX_KEY = process.env.QYWX_KEY;
 }
@@ -263,39 +199,6 @@ if (process.env.PUSH_PLUS_TOKEN) {
 if (process.env.PUSH_PLUS_USER) {
   PUSH_PLUS_USER = process.env.PUSH_PLUS_USER;
 }
-
-if (process.env.AIBOTK_KEY) {
-  AIBOTK_KEY = process.env.AIBOTK_KEY;
-}
-if (process.env.AIBOTK_TYPE) {
-  AIBOTK_TYPE = process.env.AIBOTK_TYPE;
-}
-if (process.env.AIBOTK_NAME) {
-  AIBOTK_NAME = process.env.AIBOTK_NAME;
-}
-
-if (process.env.FSKEY) {
-  FSKEY = process.env.FSKEY;
-}
-
-if (process.env.SMTP_SERVER) {
-  SMTP_SERVER = process.env.SMTP_SERVER;
-}
-if (process.env.SMTP_SSL) {
-  SMTP_SSL = process.env.SMTP_SSL;
-}
-if (process.env.SMTP_EMAIL) {
-  SMTP_EMAIL = process.env.SMTP_EMAIL;
-}
-if (process.env.SMTP_PASSWORD) {
-  SMTP_PASSWORD = process.env.SMTP_PASSWORD;
-}
-if (process.env.SMTP_NAME) {
-  SMTP_NAME = process.env.SMTP_NAME;
-}
-if (process.env.PUSHME_KEY) {
-  PUSHME_KEY = process.env.PUSHME_KEY;
-}
 //==========================云端环境变量的判断与接收=========================
 
 /**
@@ -310,20 +213,10 @@ async function sendNotify(
   text,
   desp,
   params = {},
-  author = '',
+  author = '\n\n本通知 By：https://github.com/whyour/qinglong',
 ) {
   //提供6种通知
   desp += author; //增加作者信息，防止被贩卖等
-
-  // 根据标题跳过一些消息推送，环境变量：SKIP_PUSH_TITLE 用回车分隔
-  let skipTitle = process.env.SKIP_PUSH_TITLE;
-  if (skipTitle) {
-    if (skipTitle.split('\n').includes(text)) {
-      console.info(text + '在SKIP_PUSH_TITLE环境变量内，跳过推送！');
-      return;
-    }
-  }
-
   await Promise.all([
     serverNotify(text, desp), //微信server酱
     pushPlusNotify(text, desp), //pushplus(推送加)
@@ -339,12 +232,6 @@ async function sendNotify(
     iGotNotify(text, desp, params), //iGot
     gobotNotify(text, desp), //go-cqhttp
     gotifyNotify(text, desp), //gotify
-    ChatNotify(text, desp), //synolog chat
-    PushDeerNotify(text, desp), //PushDeer
-    aibotkNotify(text, desp), //智能微秘书
-    fsBotNotify(text, desp), //飞书机器人
-    smtpNotify(text, desp), //SMTP 邮件
-    PushMeNotify(text, desp, params), //PushMe
   ]);
 }
 
@@ -385,7 +272,7 @@ function gotifyNotify(text, desp) {
   });
 }
 
-function gobotNotify(text, desp) {
+function gobotNotify(text, desp, time = 2100) {
   return new Promise((resolve) => {
     if (GOBOT_URL) {
       const options = {
@@ -396,34 +283,38 @@ function gobotNotify(text, desp) {
         },
         timeout,
       };
-      $.post(options, (err, resp, data) => {
-        try {
-          if (err) {
-            console.log('发送go-cqhttp通知调用API失败！！\n');
-            console.log(err);
-          } else {
-            data = JSON.parse(data);
-            if (data.retcode === 0) {
-              console.log('go-cqhttp发送通知消息成功🎉\n');
-            } else if (data.retcode === 100) {
-              console.log(`go-cqhttp发送通知消息异常: ${data.errmsg}\n`);
+      setTimeout(() => {
+        $.post(options, (err, resp, data) => {
+          try {
+            if (err) {
+              console.log('发送go-cqhttp通知调用API失败！！\n');
+              console.log(err);
             } else {
-              console.log(`go-cqhttp发送通知消息异常\n${JSON.stringify(data)}`);
+              data = JSON.parse(data);
+              if (data.retcode === 0) {
+                console.log('go-cqhttp发送通知消息成功🎉\n');
+              } else if (data.retcode === 100) {
+                console.log(`go-cqhttp发送通知消息异常: ${data.errmsg}\n`);
+              } else {
+                console.log(
+                  `go-cqhttp发送通知消息异常\n${JSON.stringify(data)}`,
+                );
+              }
             }
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve(data);
           }
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve(data);
-        }
-      });
+        });
+      }, time);
     } else {
       resolve();
     }
   });
 }
 
-function serverNotify(text, desp) {
+function serverNotify(text, desp, time = 2100) {
   return new Promise((resolve) => {
     if (SCKEY) {
       //微信server酱推送通知一个\n不会换行，需要两个\n才能换行，故做此替换
@@ -438,104 +329,152 @@ function serverNotify(text, desp) {
         },
         timeout,
       };
-      $.post(options, (err, resp, data) => {
-        try {
-          if (err) {
-            console.log('发送通知调用API失败！！\n');
-            console.log(err);
-          } else {
-            data = JSON.parse(data);
-            //server酱和Server酱·Turbo版的返回json格式不太一样
-            if (data.errno === 0 || data.data.errno === 0) {
-              console.log('server酱发送通知消息成功🎉\n');
-            } else if (data.errno === 1024) {
-              // 一分钟内发送相同的内容会触发
-              console.log(`server酱发送通知消息异常: ${data.errmsg}\n`);
+      setTimeout(() => {
+        $.post(options, (err, resp, data) => {
+          try {
+            if (err) {
+              console.log('发送通知调用API失败！！\n');
+              console.log(err);
             } else {
-              console.log(`server酱发送通知消息异常\n${JSON.stringify(data)}`);
+              data = JSON.parse(data);
+              //server酱和Server酱·Turbo版的返回json格式不太一样
+              if (data.errno === 0 || data.data.errno === 0) {
+                console.log('server酱发送通知消息成功🎉\n');
+              } else if (data.errno === 1024) {
+                // 一分钟内发送相同的内容会触发
+                console.log(`server酱发送通知消息异常: ${data.errmsg}\n`);
+              } else {
+                console.log(
+                  `server酱发送通知消息异常\n${JSON.stringify(data)}`,
+                );
+              }
             }
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve(data);
           }
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve(data);
-        }
-      });
+        });
+      }, time);
     } else {
       resolve();
     }
   });
 }
 
-function PushDeerNotify(text, desp) {
+function PushDeerNotify(text, desp, time = 2100) {
   return new Promise((resolve) => {
     if (PUSHDEER_KEY) {
       // PushDeer 建议对消息内容进行 urlencode
       desp = encodeURI(desp);
       const options = {
-        url: PUSHDEER_URL || `https://api2.pushdeer.com/message/push`,
+        url: `https://api2.pushdeer.com/message/push`,
         body: `pushkey=${PUSHDEER_KEY}&text=${text}&desp=${desp}&type=markdown`,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         timeout,
       };
-      $.post(options, (err, resp, data) => {
-        try {
-          if (err) {
-            console.log('发送通知调用API失败！！\n');
-            console.log(err);
-          } else {
-            data = JSON.parse(data);
-            // 通过返回的result的长度来判断是否成功
-            if (
-              data.content.result.length !== undefined &&
-              data.content.result.length > 0
-            ) {
-              console.log('PushDeer发送通知消息成功🎉\n');
+      setTimeout(() => {
+        $.post(options, (err, resp, data) => {
+          try {
+            if (err) {
+              console.log('发送通知调用API失败！！\n');
+              console.log(err);
             } else {
-              console.log(`PushDeer发送通知消息异常\n${JSON.stringify(data)}`);
+              data = JSON.parse(data);
+              // 通过反悔的result的长度来判断是否成功
+              if (
+                data.content.result.length !== undefined &&
+                data.content.result.length > 0
+              ) {
+                console.log('PushDeer发送通知消息成功🎉\n');
+              } else {
+                console.log(
+                  `PushDeer发送通知消息异常\n${JSON.stringify(data)}`,
+                );
+              }
             }
+          } catch (e) {
+            $.logErr(e, resp);
+          } finally {
+            resolve(data);
           }
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve(data);
-        }
-      });
+        });
+      }, time);
     } else {
       resolve();
     }
   });
 }
 
-function ChatNotify(text, desp) {
+function CoolPush(text, desp) {
   return new Promise((resolve) => {
-    if (CHAT_URL && CHAT_TOKEN) {
-      // 对消息内容进行 urlencode
-      desp = encodeURI(desp);
-      const options = {
-        url: `${CHAT_URL}${CHAT_TOKEN}`,
-        body: `payload={"text":"${text}\n${desp}"}`,
+    if (QQ_SKEY) {
+      let options = {
+        url: `https://push.xuthus.cc/${QQ_MODE}/${QQ_SKEY}`,
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
       };
+
+      // 已知敏感词
+      text = text.replace(/京豆/g, '豆豆');
+      desp = desp.replace(/京豆/g, '');
+      desp = desp.replace(/🐶/g, '');
+      desp = desp.replace(/红包/g, 'H包');
+
+      switch (QQ_MODE) {
+        case 'email':
+          options.json = {
+            t: text,
+            c: desp,
+          };
+          break;
+        default:
+          options.body = `${text}\n\n${desp}`;
+      }
+
+      let pushMode = function (t) {
+        switch (t) {
+          case 'send':
+            return '个人';
+          case 'group':
+            return 'QQ群';
+          case 'wx':
+            return '微信';
+          case 'ww':
+            return '企业微信';
+          case 'email':
+            return '邮件';
+          default:
+            return '未知方式';
+        }
+      };
+
       $.post(options, (err, resp, data) => {
         try {
           if (err) {
-            console.log('发送通知调用API失败！！\n');
+            console.log(`发送${pushMode(QQ_MODE)}通知调用API失败！！\n`);
             console.log(err);
           } else {
             data = JSON.parse(data);
-            if (data.success) {
-              console.log('Chat发送通知消息成功🎉\n');
+            if (data.code === 200) {
+              console.log(`酷推发送${pushMode(QQ_MODE)}通知消息成功🎉\n`);
+            } else if (data.code === 400) {
+              console.log(
+                `QQ酷推(Cool Push)发送${pushMode(QQ_MODE)}推送失败：${
+                  data.msg
+                }\n`,
+              );
+            } else if (data.code === 503) {
+              console.log(`QQ酷推出错，${data.message}：${data.data}\n`);
             } else {
-              console.log(`Chat发送通知消息异常\n${JSON.stringify(data)}`);
+              console.log(`酷推推送异常: ${JSON.stringify(data)}`);
             }
           }
         } catch (e) {
-          $.logErr(e);
+          $.logErr(e, resp);
         } finally {
           resolve(data);
         }
@@ -552,7 +491,7 @@ function BarkNotify(text, desp, params = {}) {
       const options = {
         url: `${BARK_PUSH}/${encodeURIComponent(text)}/${encodeURIComponent(
           desp,
-        )}?icon=${BARK_ICON}&sound=${BARK_SOUND}&group=${BARK_GROUP}&${querystring.stringify(
+        )}?icon=${BARK_ICON}?sound=${BARK_SOUND}&group=${BARK_GROUP}&${querystring.stringify(
           params,
         )}`,
         headers: {
@@ -590,13 +529,9 @@ function tgBotNotify(text, desp) {
     if (TG_BOT_TOKEN && TG_USER_ID) {
       const options = {
         url: `https://${TG_API_HOST}/bot${TG_BOT_TOKEN}/sendMessage`,
-        json: {
-          chat_id: `${TG_USER_ID}`,
-          text: `${text}\n\n${desp}`,
-          disable_web_page_preview: true,
-        },
+        body: `chat_id=${TG_USER_ID}&text=${text}\n\n${desp}&disable_web_page_preview=true`,
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
         timeout,
       };
@@ -648,7 +583,7 @@ function ddBotNotify(text, desp) {
       json: {
         msgtype: 'text',
         text: {
-          content: `${text}\n\n${desp}`,
+          content: ` ${text}\n\n${desp}`,
         },
       },
       headers: {
@@ -711,11 +646,11 @@ function ddBotNotify(text, desp) {
 function qywxBotNotify(text, desp) {
   return new Promise((resolve) => {
     const options = {
-      url: `${QYWX_ORIGIN}/cgi-bin/webhook/send?key=${QYWX_KEY}`,
+      url: `https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${QYWX_KEY}`,
       json: {
         msgtype: 'text',
         text: {
-          content: `${text}\n\n${desp}`,
+          content: ` ${text}\n\n${desp}`,
         },
       },
       headers: {
@@ -773,7 +708,7 @@ function qywxamNotify(text, desp) {
     if (QYWX_AM) {
       const QYWX_AM_AY = QYWX_AM.split(',');
       const options_accesstoken = {
-        url: `${QYWX_ORIGIN}/cgi-bin/gettoken`,
+        url: `https://qyapi.weixin.qq.com/cgi-bin/gettoken`,
         json: {
           corpid: `${QYWX_AM_AY[0]}`,
           corpsecret: `${QYWX_AM_AY[1]}`,
@@ -784,9 +719,9 @@ function qywxamNotify(text, desp) {
         timeout,
       };
       $.post(options_accesstoken, (err, resp, data) => {
-        let html = desp.replace(/\n/g, '<br/>');
-        let json = JSON.parse(data);
-        let accesstoken = json.access_token;
+        html = desp.replace(/\n/g, '<br/>');
+        var json = JSON.parse(data);
+        accesstoken = json.access_token;
         let options;
 
         switch (QYWX_AM_AY[4]) {
@@ -838,7 +773,7 @@ function qywxamNotify(text, desp) {
           };
         }
         options = {
-          url: `${QYWX_ORIGIN}/cgi-bin/message/send?access_token=${accesstoken}`,
+          url: `https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=${accesstoken}`,
           json: {
             touser: `${ChangeUserId(desp)}`,
             agentid: `${QYWX_AM_AY[3]}`,
@@ -982,189 +917,10 @@ function pushPlusNotify(text, desp) {
   });
 }
 
-function aibotkNotify(text, desp) {
-  return new Promise((resolve) => {
-    if (AIBOTK_KEY && AIBOTK_TYPE && AIBOTK_NAME) {
-      let json = {};
-      let url = '';
-      switch (AIBOTK_TYPE) {
-        case 'room':
-          url = 'https://api-bot.aibotk.com/openapi/v1/chat/room';
-          json = {
-            apiKey: `${AIBOTK_KEY}`,
-            roomName: `${AIBOTK_NAME}`,
-            message: {
-              type: 1,
-              content: `【青龙快讯】\n\n${text}\n${desp}`,
-            },
-          };
-          break;
-        case 'contact':
-          url = 'https://api-bot.aibotk.com/openapi/v1/chat/contact';
-          json = {
-            apiKey: `${AIBOTK_KEY}`,
-            name: `${AIBOTK_NAME}`,
-            message: {
-              type: 1,
-              content: `【青龙快讯】\n\n${text}\n${desp}`,
-            },
-          };
-          break;
-      }
-      const options = {
-        url: url,
-        json,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        timeout,
-      };
-      $.post(options, (err, resp, data) => {
-        try {
-          if (err) {
-            console.log('智能微秘书发送通知消息失败！！\n');
-            console.log(err);
-          } else {
-            data = JSON.parse(data);
-            if (data.code === 0) {
-              console.log('智能微秘书发送通知消息成功🎉。\n');
-            } else {
-              console.log(`${data.error}\n`);
-            }
-          }
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve(data);
-        }
-      });
-    } else {
-      resolve();
-    }
-  });
-}
-
-function fsBotNotify(text, desp) {
-  return new Promise((resolve) => {
-    if (FSKEY) {
-      const options = {
-        url: `https://open.feishu.cn/open-apis/bot/v2/hook/${FSKEY}`,
-        json: { msg_type: 'text', content: { text: `${text}\n\n${desp}` } },
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        timeout,
-      };
-      $.post(options, (err, resp, data) => {
-        try {
-          if (err) {
-            console.log('发送通知调用API失败！！\n');
-            console.log(err);
-          } else {
-            data = JSON.parse(data);
-            if (data.StatusCode === 0) {
-              console.log('飞书发送通知消息成功🎉\n');
-            } else {
-              console.log(`${data.msg}\n`);
-            }
-          }
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve(data);
-        }
-      });
-    } else {
-      resolve();
-    }
-  });
-}
-
-async function smtpNotify(text, desp) {
-  if (![SMTP_SERVER, SMTP_EMAIL, SMTP_PASSWORD].every(Boolean)) {
-    return;
-  }
-
-  try {
-    const nodemailer = require('nodemailer');
-    const transporter = nodemailer.createTransport(
-      `${SMTP_SSL === 'true' ? 'smtps:' : 'smtp:'}//${SMTP_SERVER}`,
-      {
-        auth: {
-          user: SMTP_EMAIL,
-          pass: SMTP_PASSWORD,
-        },
-      },
-    );
-
-    const addr = SMTP_NAME ? `"${SMTP_NAME}" <${SMTP_EMAIL}>` : SMTP_EMAIL;
-    const info = await transporter.sendMail({
-      from: addr,
-      to: addr,
-      subject: text,
-      text: desp,
-    });
-
-    if (!!info.messageId) {
-      console.log('SMTP发送通知消息成功🎉\n');
-      return true;
-    }
-    console.log('SMTP发送通知消息失败！！\n');
-  } catch (e) {
-    console.log('SMTP发送通知消息出现错误！！\n');
-    console.log(e);
-  }
-}
-
-function smtpNotify(text, desp) {
-  return new Promise((resolve) => {
-    if (SMTP_SERVER && SMTP_SSL && SMTP_EMAIL && SMTP_PASSWORD && SMTP_NAME) {
-      // todo: Node.js并没有内置的 smtp 实现，需要调用外部库，因为不清楚这个文件的模块依赖情况，所以留给有缘人实现
-    } else {
-      resolve();
-    }
-  });
-}
-
-function PushMeNotify(text, desp, params = {}) {
-  return new Promise((resolve) => {
-    if (PUSHME_KEY) {
-      const options = {
-        url: `https://push.i-i.me?push_key=${PUSHME_KEY}`,
-        json: { title: text, content: desp, ...params },
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        timeout,
-      };
-      $.post(options, (err, resp, data) => {
-        try {
-          if (err) {
-            console.log('PushMeNotify发送通知调用API失败！！\n');
-            console.log(err);
-          } else {
-            if (data === 'success') {
-              console.log('PushMe发送通知消息成功🎉\n');
-            } else {
-              console.log(`${data}\n`);
-            }
-          }
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve(data);
-        }
-      });
-    } else {
-      resolve();
-    }
-  });
-}
-
 module.exports = {
   sendNotify,
   BARK_PUSH,
 };
 
 // prettier-ignore
-function Env(t, s) { return new class { constructor(t, s) { this.name = t, this.data = null, this.dataFile = "box.dat", this.logs = [], this.logSeparator = "\n", this.startTime = (new Date).getTime(), Object.assign(this, s), this.log("", `\ud83d\udd14${this.name}, \u5f00\u59cb!`) } isNode() { return "undefined" != typeof module && !!module.exports } isQuanX() { return "undefined" != typeof $task } isSurge() { return "undefined" != typeof $httpClient && "undefined" == typeof $loon } isLoon() { return "undefined" != typeof $loon } getScript(t) { return new Promise(s => { $.get({ url: t }, (t, e, i) => s(i)) }) } runScript(t, s) { return new Promise(e => { let i = this.getdata("@chavy_boxjs_userCfgs.httpapi"); i = i ? i.replace(/\n/g, "").trim() : i; let o = this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout"); o = o ? 1 * o : 20, o = s && s.timeout ? s.timeout : o; const [h, a] = i.split("@"), r = { url: `http://${a}/v1/scripting/evaluate`, body: { script_text: t, mock_type: "cron", timeout: o }, headers: { "X-Key": h, Accept: "*/*" } }; $.post(r, (t, s, i) => e(i)) }).catch(t => this.logErr(t)) } loaddata() { if (!this.isNode()) return {}; { this.fs = this.fs ? this.fs : require("fs"), this.path = this.path ? this.path : require("path"); const t = this.path.resolve(this.dataFile), s = this.path.resolve(process.cwd(), this.dataFile), e = this.fs.existsSync(t), i = !e && this.fs.existsSync(s); if (!e && !i) return {}; { const i = e ? t : s; try { return JSON.parse(this.fs.readFileSync(i)) } catch (t) { return {} } } } } writedata() { if (this.isNode()) { this.fs = this.fs ? this.fs : require("fs"), this.path = this.path ? this.path : require("path"); const t = this.path.resolve(this.dataFile), s = this.path.resolve(process.cwd(), this.dataFile), e = this.fs.existsSync(t), i = !e && this.fs.existsSync(s), o = JSON.stringify(this.data); e ? this.fs.writeFileSync(t, o) : i ? this.fs.writeFileSync(s, o) : this.fs.writeFileSync(t, o) } } lodash_get(t, s, e) { const i = s.replace(/\[(\d+)\]/g, ".$1").split("."); let o = t; for (const t of i) if (o = Object(o)[t], void 0 === o) return e; return o } lodash_set(t, s, e) { return Object(t) !== t ? t : (Array.isArray(s) || (s = s.toString().match(/[^.[\]]+/g) || []), s.slice(0, -1).reduce((t, e, i) => Object(t[e]) === t[e] ? t[e] : t[e] = Math.abs(s[i + 1]) >> 0 == +s[i + 1] ? [] : {}, t)[s[s.length - 1]] = e, t) } getdata(t) { let s = this.getval(t); if (/^@/.test(t)) { const [, e, i] = /^@(.*?)\.(.*?)$/.exec(t), o = e ? this.getval(e) : ""; if (o) try { const t = JSON.parse(o); s = t ? this.lodash_get(t, i, "") : s } catch (t) { s = "" } } return s } setdata(t, s) { let e = !1; if (/^@/.test(s)) { const [, i, o] = /^@(.*?)\.(.*?)$/.exec(s), h = this.getval(i), a = i ? "null" === h ? null : h || "{}" : "{}"; try { const s = JSON.parse(a); this.lodash_set(s, o, t), e = this.setval(JSON.stringify(s), i) } catch (s) { const h = {}; this.lodash_set(h, o, t), e = this.setval(JSON.stringify(h), i) } } else e = $.setval(t, s); return e } getval(t) { return this.isSurge() || this.isLoon() ? $persistentStore.read(t) : this.isQuanX() ? $prefs.valueForKey(t) : this.isNode() ? (this.data = this.loaddata(), this.data[t]) : this.data && this.data[t] || null } setval(t, s) { return this.isSurge() || this.isLoon() ? $persistentStore.write(t, s) : this.isQuanX() ? $prefs.setValueForKey(t, s) : this.isNode() ? (this.data = this.loaddata(), this.data[s] = t, this.writedata(), !0) : this.data && this.data[s] || null } initGotEnv(t) { this.got = this.got ? this.got : require("got"), this.cktough = this.cktough ? this.cktough : require("tough-cookie"), this.ckjar = this.ckjar ? this.ckjar : new this.cktough.CookieJar, t && (t.headers = t.headers ? t.headers : {}, void 0 === t.headers.Cookie && void 0 === t.cookieJar && (t.cookieJar = this.ckjar)) } get(t, s = (() => { })) { t.headers && (delete t.headers["Content-Type"], delete t.headers["Content-Length"]), this.isSurge() || this.isLoon() ? $httpClient.get(t, (t, e, i) => { !t && e && (e.body = i, e.statusCode = e.status), s(t, e, i) }) : this.isQuanX() ? $task.fetch(t).then(t => { const { statusCode: e, statusCode: i, headers: o, body: h } = t; s(null, { status: e, statusCode: i, headers: o, body: h }, h) }, t => s(t)) : this.isNode() && (this.initGotEnv(t), this.got(t).on("redirect", (t, s) => { try { const e = t.headers["set-cookie"].map(this.cktough.Cookie.parse).toString(); this.ckjar.setCookieSync(e, null), s.cookieJar = this.ckjar } catch (t) { this.logErr(t) } }).then(t => { const { statusCode: e, statusCode: i, headers: o, body: h } = t; s(null, { status: e, statusCode: i, headers: o, body: h }, h) }, t => s(t))) } post(t, s = (() => { })) { if (t.body && t.headers && !t.headers["Content-Type"] && (t.headers["Content-Type"] = "application/x-www-form-urlencoded"), delete t.headers["Content-Length"], this.isSurge() || this.isLoon()) $httpClient.post(t, (t, e, i) => { !t && e && (e.body = i, e.statusCode = e.status), s(t, e, i) }); else if (this.isQuanX()) t.method = "POST", $task.fetch(t).then(t => { const { statusCode: e, statusCode: i, headers: o, body: h } = t; s(null, { status: e, statusCode: i, headers: o, body: h }, h) }, t => s(t)); else if (this.isNode()) { this.initGotEnv(t); const { url: e, ...i } = t; this.got.post(e, i).then(t => { const { statusCode: e, statusCode: i, headers: o, body: h } = t; s(null, { status: e, statusCode: i, headers: o, body: h }, h) }, t => s(t)) } } time(t) { let s = { "M+": (new Date).getMonth() + 1, "d+": (new Date).getDate(), "H+": (new Date).getHours(), "m+": (new Date).getMinutes(), "s+": (new Date).getSeconds(), "q+": Math.floor(((new Date).getMonth() + 3) / 3), S: (new Date).getMilliseconds() }; /(y+)/.test(t) && (t = t.replace(RegExp.$1, ((new Date).getFullYear() + "").substr(4 - RegExp.$1.length))); for (let e in s) new RegExp("(" + e + ")").test(t) && (t = t.replace(RegExp.$1, 1 == RegExp.$1.length ? s[e] : ("00" + s[e]).substr(("" + s[e]).length))); return t } msg(s = t, e = "", i = "", o) { const h = t => !t || !this.isLoon() && this.isSurge() ? t : "string" == typeof t ? this.isLoon() ? t : this.isQuanX() ? { "open-url": t } : void 0 : "object" == typeof t && (t["open-url"] || t["media-url"]) ? this.isLoon() ? t["open-url"] : this.isQuanX() ? t : void 0 : void 0; $.isMute || (this.isSurge() || this.isLoon() ? $notification.post(s, e, i, h(o)) : this.isQuanX() && $notify(s, e, i, h(o))), this.logs.push("", "==============\ud83d\udce3\u7cfb\u7edf\u901a\u77e5\ud83d\udce3=============="), this.logs.push(s), e && this.logs.push(e), i && this.logs.push(i) } log(...t) { t.length > 0 ? this.logs = [...this.logs, ...t] : console.log(this.logs.join(this.logSeparator)) } logErr(t, s) { const e = !this.isSurge() && !this.isQuanX() && !this.isLoon(); e ? $.log("", `\u2757\ufe0f${this.name}, \u9519\u8bef!`, t.stack) : $.log("", `\u2757\ufe0f${this.name}, \u9519\u8bef!`, t) } wait(t) { return new Promise(s => setTimeout(s, t)) } done(t = {}) { const s = (new Date).getTime(), e = (s - this.startTime) / 1e3; this.log("", `\ud83d\udd14${this.name}, \u7ed3\u675f! \ud83d\udd5b ${e} \u79d2`), this.log(), (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(t) } }(t, s) }
+function Env(t,s){return new class{constructor(t,s){this.name=t,this.data=null,this.dataFile="box.dat",this.logs=[],this.logSeparator="\n",this.startTime=(new Date).getTime(),Object.assign(this,s),this.log("",`\ud83d\udd14${this.name}, \u5f00\u59cb!`)}isNode(){return"undefined"!=typeof module&&!!module.exports}isQuanX(){return"undefined"!=typeof $task}isSurge(){return"undefined"!=typeof $httpClient&&"undefined"==typeof $loon}isLoon(){return"undefined"!=typeof $loon}getScript(t){return new Promise(s=>{$.get({url:t},(t,e,i)=>s(i))})}runScript(t,s){return new Promise(e=>{let i=this.getdata("@chavy_boxjs_userCfgs.httpapi");i=i?i.replace(/\n/g,"").trim():i;let o=this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");o=o?1*o:20,o=s&&s.timeout?s.timeout:o;const[h,a]=i.split("@"),r={url:`http://${a}/v1/scripting/evaluate`,body:{script_text:t,mock_type:"cron",timeout:o},headers:{"X-Key":h,Accept:"*/*"}};$.post(r,(t,s,i)=>e(i))}).catch(t=>this.logErr(t))}loaddata(){if(!this.isNode())return{};{this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),s=this.path.resolve(process.cwd(),this.dataFile),e=this.fs.existsSync(t),i=!e&&this.fs.existsSync(s);if(!e&&!i)return{};{const i=e?t:s;try{return JSON.parse(this.fs.readFileSync(i))}catch(t){return{}}}}}writedata(){if(this.isNode()){this.fs=this.fs?this.fs:require("fs"),this.path=this.path?this.path:require("path");const t=this.path.resolve(this.dataFile),s=this.path.resolve(process.cwd(),this.dataFile),e=this.fs.existsSync(t),i=!e&&this.fs.existsSync(s),o=JSON.stringify(this.data);e?this.fs.writeFileSync(t,o):i?this.fs.writeFileSync(s,o):this.fs.writeFileSync(t,o)}}lodash_get(t,s,e){const i=s.replace(/\[(\d+)\]/g,".$1").split(".");let o=t;for(const t of i)if(o=Object(o)[t],void 0===o)return e;return o}lodash_set(t,s,e){return Object(t)!==t?t:(Array.isArray(s)||(s=s.toString().match(/[^.[\]]+/g)||[]),s.slice(0,-1).reduce((t,e,i)=>Object(t[e])===t[e]?t[e]:t[e]=Math.abs(s[i+1])>>0==+s[i+1]?[]:{},t)[s[s.length-1]]=e,t)}getdata(t){let s=this.getval(t);if(/^@/.test(t)){const[,e,i]=/^@(.*?)\.(.*?)$/.exec(t),o=e?this.getval(e):"";if(o)try{const t=JSON.parse(o);s=t?this.lodash_get(t,i,""):s}catch(t){s=""}}return s}setdata(t,s){let e=!1;if(/^@/.test(s)){const[,i,o]=/^@(.*?)\.(.*?)$/.exec(s),h=this.getval(i),a=i?"null"===h?null:h||"{}":"{}";try{const s=JSON.parse(a);this.lodash_set(s,o,t),e=this.setval(JSON.stringify(s),i)}catch(s){const h={};this.lodash_set(h,o,t),e=this.setval(JSON.stringify(h),i)}}else e=$.setval(t,s);return e}getval(t){return this.isSurge()||this.isLoon()?$persistentStore.read(t):this.isQuanX()?$prefs.valueForKey(t):this.isNode()?(this.data=this.loaddata(),this.data[t]):this.data&&this.data[t]||null}setval(t,s){return this.isSurge()||this.isLoon()?$persistentStore.write(t,s):this.isQuanX()?$prefs.setValueForKey(t,s):this.isNode()?(this.data=this.loaddata(),this.data[s]=t,this.writedata(),!0):this.data&&this.data[s]||null}initGotEnv(t){this.got=this.got?this.got:require("got"),this.cktough=this.cktough?this.cktough:require("tough-cookie"),this.ckjar=this.ckjar?this.ckjar:new this.cktough.CookieJar,t&&(t.headers=t.headers?t.headers:{},void 0===t.headers.Cookie&&void 0===t.cookieJar&&(t.cookieJar=this.ckjar))}get(t,s=(()=>{})){t.headers&&(delete t.headers["Content-Type"],delete t.headers["Content-Length"]),this.isSurge()||this.isLoon()?$httpClient.get(t,(t,e,i)=>{!t&&e&&(e.body=i,e.statusCode=e.status),s(t,e,i)}):this.isQuanX()?$task.fetch(t).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t)):this.isNode()&&(this.initGotEnv(t),this.got(t).on("redirect",(t,s)=>{try{const e=t.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();this.ckjar.setCookieSync(e,null),s.cookieJar=this.ckjar}catch(t){this.logErr(t)}}).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t)))}post(t,s=(()=>{})){if(t.body&&t.headers&&!t.headers["Content-Type"]&&(t.headers["Content-Type"]="application/x-www-form-urlencoded"),delete t.headers["Content-Length"],this.isSurge()||this.isLoon())$httpClient.post(t,(t,e,i)=>{!t&&e&&(e.body=i,e.statusCode=e.status),s(t,e,i)});else if(this.isQuanX())t.method="POST",$task.fetch(t).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t));else if(this.isNode()){this.initGotEnv(t);const{url:e,...i}=t;this.got.post(e,i).then(t=>{const{statusCode:e,statusCode:i,headers:o,body:h}=t;s(null,{status:e,statusCode:i,headers:o,body:h},h)},t=>s(t))}}time(t){let s={"M+":(new Date).getMonth()+1,"d+":(new Date).getDate(),"H+":(new Date).getHours(),"m+":(new Date).getMinutes(),"s+":(new Date).getSeconds(),"q+":Math.floor(((new Date).getMonth()+3)/3),S:(new Date).getMilliseconds()};/(y+)/.test(t)&&(t=t.replace(RegExp.$1,((new Date).getFullYear()+"").substr(4-RegExp.$1.length)));for(let e in s)new RegExp("("+e+")").test(t)&&(t=t.replace(RegExp.$1,1==RegExp.$1.length?s[e]:("00"+s[e]).substr((""+s[e]).length)));return t}msg(s=t,e="",i="",o){const h=t=>!t||!this.isLoon()&&this.isSurge()?t:"string"==typeof t?this.isLoon()?t:this.isQuanX()?{"open-url":t}:void 0:"object"==typeof t&&(t["open-url"]||t["media-url"])?this.isLoon()?t["open-url"]:this.isQuanX()?t:void 0:void 0;$.isMute||(this.isSurge()||this.isLoon()?$notification.post(s,e,i,h(o)):this.isQuanX()&&$notify(s,e,i,h(o))),this.logs.push("","==============\ud83d\udce3\u7cfb\u7edf\u901a\u77e5\ud83d\udce3=============="),this.logs.push(s),e&&this.logs.push(e),i&&this.logs.push(i)}log(...t){t.length>0?this.logs=[...this.logs,...t]:console.log(this.logs.join(this.logSeparator))}logErr(t,s){const e=!this.isSurge()&&!this.isQuanX()&&!this.isLoon();e?$.log("",`\u2757\ufe0f${this.name}, \u9519\u8bef!`,t.stack):$.log("",`\u2757\ufe0f${this.name}, \u9519\u8bef!`,t)}wait(t){return new Promise(s=>setTimeout(s,t))}done(t={}){const s=(new Date).getTime(),e=(s-this.startTime)/1e3;this.log("",`\ud83d\udd14${this.name}, \u7ed3\u675f! \ud83d\udd5b ${e} \u79d2`),this.log(),(this.isSurge()||this.isQuanX()||this.isLoon())&&$done(t)}}(t,s)}

@@ -81,7 +81,7 @@ ss.headers={"User-Agent":"Mozilla/5.0 (Linux; Android 13; 22081212C Build/TKQ1.2
 ss.mount('https://', DESAdapter())
 yc = 0.1
 wt = 0
-kswt = -3
+kswt = -2
 yf = datetime.datetime.now().strftime("%Y%m")
 
 
@@ -479,7 +479,7 @@ def main():
 
     for i in chinaTelecomAccount.split('&'):
 
-        i = i.split('#')
+        i = i.split('@')
         phone = i[0]
         password = i[1]
         uid = i[-1]
@@ -507,7 +507,7 @@ jdhf = ""
 #重发次数
 cfcs = 15
 #wxpusher推送appToken
-appToken = ""
+appToken = "AT_lYvTZzheQyGVV4s70mAblInUzjPuMsX1"
 jdaid = '60dd79533dc03d3c76bdde30'
 ck = {}
 load_token_file = 'chinaTelecom_cache.json'

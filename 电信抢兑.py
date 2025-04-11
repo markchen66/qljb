@@ -472,8 +472,8 @@ def main():
     else:
         print("瑞数加密已关闭")
         rs = 0
-    if os.environ.get('chinaTelecomAccount')!= None:
-        chinaTelecomAccount = os.environ.get('chinaTelecomAccount')
+    if os.environ.get('jdhf')!= None:
+        chinaTelecomAccount = os.environ.get('jdhf')
     else:
         chinaTelecomAccount = jdhf
 
@@ -503,7 +503,7 @@ def main():
             printn(f'{phone} 登录失败')
 
 #手机号@密码@wxpusheruid
-jdhf = ""
+jdhf = "15318464883@177453@UID_Fd07tcXYCxBaJgrrRbXjAs5RRQRl"
 #重发次数
 cfcs = 15
 #wxpusher推送appToken

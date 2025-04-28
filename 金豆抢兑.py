@@ -16,7 +16,7 @@ for item in dxyh.split('\n'):
     phoneArr.append({
         'phone':item.split('#')[0],
         'password':item.split('#')[1],
-        'uid':item.split('#')[2]
+        'uid':1
     })
 import subprocess
 import re

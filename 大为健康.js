@@ -19,6 +19,27 @@ let userList = [
   }
 ]
 //1-101
+/*
+ * @Author: 梁 && fang_liang_liang@foxmail.com
+ * @Date: 2024-11-20 09:44:59
+ * @Description: 
+ * @FilePath: \薅羊毛\整理\大为健康类\大为健康-闲鱼_流年忘返.js
+ * @LastEditTime: 2024-11-20 14:30:05
+ * @LastEditors: 梁 && fang_liang_liang@foxmail.com
+ */
+
+let uid = ""
+let Authorization = ""
+let openid = "";
+let userList = [
+  {
+    "uid": "2686938",
+    "Authorization": "4f0a411a3c14afaa239b51b9b23063f9",
+    "baseUrl": "http://69162206558.6.syhywl1.com/",
+    "openid": "o8LHL6Mi87QvwDikTEpWn1JSh10M"
+  }
+]
+//1-101
 var ids = [
 
 
@@ -69,11 +90,10 @@ var ids = [
   "1650244102",
   "1650244165",
   "1650329764",
-  "1650329833",
-  "1650419820",
+  //"1650419820",
   "1650419872",
   "1650506926",
-  "1650506977",
+  //"1650506977",
   "1650507028",
   "1650631610",
   "1650768071",

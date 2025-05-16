@@ -48,7 +48,6 @@ class RUN:
         len_split_info = len(split_info)
         last_info = split_info[len_split_info - 1]
         self.send_UID = None
-        self.all_logs = []
         if len_split_info > 0 and "UID_" in last_info:
             self.send_UID = last_info
         self.index = index + 1
@@ -74,7 +73,7 @@ class RUN:
         self.member_day_red_packet_map = {}
         self.login_res = self.login(url)
         self.today = datetime.now().strftime('%Y-%m-%d')
-        self.answer = False
+        # self.answer = APP_INFO.get('ANSWER', []).get(self.today, False)
         self.max_level = 8
         self.packet_threshold = 1 << (self.max_level - 1)
 
@@ -89,16 +88,14 @@ class RUN:
                 result += char
         return result
 
-    def login(self, sfurl):
-        sfurl = sunquote(sfurl)
-        ress = self.s.get(sfurl, headers=self.headers)
+    def login(self, sfsyUrl):
+        ress = self.s.get(sfsyUrl, headers=self.headers)
+        # print(ress.text)
         self.user_id = self.s.cookies.get_dict().get('_login_user_id_', '')
-        self.sessionId = self.s.cookies.get_dict().get('sessionId', '')
         self.phone = self.s.cookies.get_dict().get('_login_mobile_', '')
         self.mobile = self.phone[:3] + "*" * 4 + self.phone[7:]
         if self.phone != '':
             Log(f'用户:【{self.mobile}】登陆成功')
-
             return True
         else:
             Log(f'获取用户信息失败')
@@ -2112,22 +2109,17 @@ def is_activity_end_date(end_date):
 
 
 
-
 if __name__ == '__main__':
     APP_NAME = '顺丰速运'
     ENV_NAME = 'sfsyUrl'
     CK_NAME = 'url'
-    token = os.getenv(ENV_NAME)
-    tokens = token.split('&')
+    local_script_name = os.path.basename(__file__)
     local_version = '2024.06.02'
-    all_logs = []
+    token = os.getenv(ENV_NAME)
+    tokens = token.split('\n')
+    # print(tokens)
     if len(tokens) > 0:
-
         print(f"\n>>>>>>>>>>共获取到{len(tokens)}个账号<<<<<<<<<<")
         for index, infos in enumerate(tokens):
-            run_instance = RUN(infos, index)
-            run_result = run_instance.main()
-            if run_instance.all_logs:
-                all_logs.extend(run_instance.all_logs)
-            if not run_result:
-                continue
+            run_result = RUN(infos, index).main()
+            if not run_result: continue

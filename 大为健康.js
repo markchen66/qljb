@@ -1,33 +1,3 @@
-/*
- * @Author: 梁 && fang_liang_liang@foxmail.com
- * @Date: 2024-11-20 09:44:59
- * @Description: 
- * @FilePath: \薅羊毛\整理\大为健康类\大为健康-闲鱼_流年忘返.js
- * @LastEditTime: 2024-11-20 14:30:05
- * @LastEditors: 梁 && fang_liang_liang@foxmail.com
- */
-
-let uid = ""
-let Authorization = ""
-let openid = "";
-let userList = [
-  {
-    "uid": "2686938",
-    "Authorization": "4f0a411a3c14afaa239b51b9b23063f9",
-    "baseUrl": "http://69162206558.6.syhywl1.com/",
-    "openid": "o8LHL6Mi87QvwDikTEpWn1JSh10M"
-  }
-]
-//1-101
-/*
- * @Author: 梁 && fang_liang_liang@foxmail.com
- * @Date: 2024-11-20 09:44:59
- * @Description: 
- * @FilePath: \薅羊毛\整理\大为健康类\大为健康-闲鱼_流年忘返.js
- * @LastEditTime: 2024-11-20 14:30:05
- * @LastEditors: 梁 && fang_liang_liang@foxmail.com
- */
-
 let uid = ""
 let Authorization = ""
 let openid = "";
@@ -44,8 +14,8 @@ var ids = [
 
 
 
-  "1648253549",
-  "1648345794",
+  //"1648253549",
+  //"1648345794",
   "1648345844",
   "1648345898",
   "1648345948",
@@ -108,14 +78,14 @@ var ids = [
   "1651030785",
   "1651030838",
   "1651279411",
-  "1651279460",
-  "1651279506",
+  //"1651279460",
+ // "1651279506",
   "1651279557",
   "1651279644",
   "1651366150",
   "1651366201",
   "1651366333",
-  "1651572539",
+  //"1651572539",
   "1651621672",
   "1651621726",
   "1651621775",
@@ -834,3 +804,4 @@ function Env(t, e) {
         }
     }(t, e)
 }
+

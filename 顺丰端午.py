@@ -76,6 +76,7 @@ class RUN:
         # self.answer = APP_INFO.get('ANSWER', []).get(self.today, False)
         self.max_level = 8
         self.packet_threshold = 1 << (self.max_level - 1)
+        self.all_logs = []
 
     def get_deviceId(self, characters='abcdef0123456789'):
         result = ''
